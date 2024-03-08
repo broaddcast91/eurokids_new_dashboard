@@ -1,28 +1,30 @@
-import { Box, Button, useTheme } from "@mui/material";
+import { Box,
+  //  Button,
+   useTheme } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { tokens } from "../../theme";
 import Header from "../../components/Header";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import LooksOneIcon from "@mui/icons-material/LooksOne";
-import TextField from "@mui/material/TextField";
+// import LooksOneIcon from "@mui/icons-material/LooksOne";
+// import TextField from "@mui/material/TextField";
 
 import {
   DataGrid,
-  GridToolbarContainer,
-  GridToolbarColumnsButton,
-  GridToolbarFilterButton,
-  GridToolbarDensitySelector,
+  // GridToolbarContainer,
+  // GridToolbarColumnsButton,
+  // GridToolbarFilterButton,
+  // GridToolbarDensitySelector,
 } from "@mui/x-data-grid";
-import { IconButton } from "@mui/material";
-import DownloadIcon from "@mui/icons-material/Download";
+// import { IconButton } from "@mui/material";
+// import DownloadIcon from "@mui/icons-material/Download";
 const Popup = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [data, setData] = useState([]);
   const [col, setCol] = useState([]);
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
+  // const [startDate, setStartDate] = useState(null);
+  // const [endDate, setEndDate] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -63,8 +65,7 @@ const Popup = () => {
           },
         ]);
         setData(res.data.data);
-        setStartDate("")
-        setEndDate("")
+      
         setLoading(false);
       } catch (err) {
         setError(err);
@@ -79,348 +80,348 @@ const Popup = () => {
   let newData = data.map((item, index) => {
     return { ...item, id: index + 1 };
   });
-
+ 
   //date range unique function
-  useEffect(() => {
-  async function fetchUniqueValues() {
-    try {
-      setLoading(true);
-      const token = localStorage.getItem("authToken");
-      if (!token) {
-         navigate("/login");
-        return;
-      }
-      const res = await axios.post(
-        "https://arena-backend-zj42.onrender.com/popupRangeEntries",
-        {
-          startDate: startDate,
-          endDate: endDate,
-        },
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
-      setCol([
-        { field: "id", headerName: "ID", flex: 0.5 },
-        {
-          field: "name",
-          headerName: "Name",
-          flex: 1,
-          cellClassName: "name-column--cell",
-        },
-        {
-          field: "phone",
-          headerName: "Phone Number",
-          flex: 1,
-          cellClassName: "phone-column--cell",
-        },
+  // useEffect(() => {
+  // async function fetchUniqueValues() {
+  //   try {
+  //     setLoading(true);
+  //     const token = localStorage.getItem("authToken");
+  //     if (!token) {
+  //        navigate("/login");
+  //       return;
+  //     }
+  //     const res = await axios.post(
+  //       "https://arena-backend-zj42.onrender.com/popupRangeEntries",
+  //       {
+  //         startDate: startDate,
+  //         endDate: endDate,
+  //       },
+  //       {
+  //         headers: { Authorization: `Bearer ${token}` },
+  //       }
+  //     );
+  //     setCol([
+  //       { field: "id", headerName: "ID", flex: 0.5 },
+  //       {
+  //         field: "name",
+  //         headerName: "Name",
+  //         flex: 1,
+  //         cellClassName: "name-column--cell",
+  //       },
+  //       {
+  //         field: "phone",
+  //         headerName: "Phone Number",
+  //         flex: 1,
+  //         cellClassName: "phone-column--cell",
+  //       },
 
-        {
-          field: "outlet",
-          headerName: "Outlet",
-          flex: 1,
-        },
-        {
-          field: "model",
-          headerName: "Model",
-          flex: 0.8,
-        },
-        {
-          field: "allQuery",
-          headerName: "All Query",
-          width :270
-        },
-        {
-          field: "error",
-          headerName: "Error",
-          width :200
-        },
-        {
-          field: "date",
-          headerName: "Date",
-          width:130
-        },
-        {
-          field: "time",
-          headerName: "Time",
-         width:130
-        },
-      ]);
-      setData(res.data.data);
-      setStartDate("")
-        setEndDate("")
-      setLoading(false);
-    } catch (err) {
-      setError(err);
-      window.alert("token expired")
-      navigate("/login");
-      setLoading(false);
-    }
-  }
+  //       {
+  //         field: "outlet",
+  //         headerName: "Outlet",
+  //         flex: 1,
+  //       },
+  //       {
+  //         field: "model",
+  //         headerName: "Model",
+  //         flex: 0.8,
+  //       },
+  //       {
+  //         field: "allQuery",
+  //         headerName: "All Query",
+  //         width :270
+  //       },
+  //       {
+  //         field: "error",
+  //         headerName: "Error",
+  //         width :200
+  //       },
+  //       {
+  //         field: "date",
+  //         headerName: "Date",
+  //         width:130
+  //       },
+  //       {
+  //         field: "time",
+  //         headerName: "Time",
+  //        width:130
+  //       },
+  //     ]);
+  //     setData(res.data.data);
+  //     setStartDate("")
+  //       setEndDate("")
+  //     setLoading(false);
+  //   } catch (err) {
+  //     setError(err);
+  //     window.alert("token expired")
+  //     navigate("/login");
+  //     setLoading(false);
+  //   }
+  // }
 
  
-    if (startDate && endDate) {
-      fetchUniqueValues();
-    }
-  }, [startDate, endDate, navigate]);
+  //   if (startDate && endDate) {
+  //     fetchUniqueValues();
+  //   }
+  // }, [startDate, endDate, navigate]);
 
-  const handleReset = async () => {
-    try {
-      setLoading(true);
-      const token = localStorage.getItem("authToken");
-      if (!token) {
-         navigate("/login");
-        return;
-      }
-      const res = await axios.get(
-        "https://arena-backend-zj42.onrender.com/getpopups",
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
+  // const handleReset = async () => {
+  //   try {
+  //     setLoading(true);
+  //     const token = localStorage.getItem("authToken");
+  //     if (!token) {
+  //        navigate("/login");
+  //       return;
+  //     }
+  //     const res = await axios.get(
+  //       "https://arena-backend-zj42.onrender.com/getpopups",
+  //       {
+  //         headers: { Authorization: `Bearer ${token}` },
+  //       }
+  //     );
 
-      setStartDate(null);
-      setEndDate(null);
+  //     setStartDate(null);
+  //     setEndDate(null);
 
-      setCol([
-        { field: "id", headerName: "ID", flex: 0.5 },
-        {
-          field: "name",
-          headerName: "Name",
-          flex: 1,
-          cellClassName: "name-column--cell",
-        },
-        {
-          field: "phone",
-          headerName: "Phone Number",
-          flex: 1,
-          cellClassName: "phone-column--cell",
-        },
+  //     setCol([
+  //       { field: "id", headerName: "ID", flex: 0.5 },
+  //       {
+  //         field: "name",
+  //         headerName: "Name",
+  //         flex: 1,
+  //         cellClassName: "name-column--cell",
+  //       },
+  //       {
+  //         field: "phone",
+  //         headerName: "Phone Number",
+  //         flex: 1,
+  //         cellClassName: "phone-column--cell",
+  //       },
 
-        {
-          field: "outlet",
-          headerName: "Outlet",
-          flex: 1,
-        },
-        {
-          field: "model",
-          headerName: "Model",
-          flex: 0.8,
-        },
-        {
-          field: "allQuery",
-          headerName: "All Query",
-          width :270
-        },
-        {
-          field: "error",
-          headerName: "Error",
-          width :200
-        },
-        {
-          field: "date",
-          headerName: "Date",
-          width:130
-        },
-        {
-          field: "time",
-          headerName: "Time",
-         width:130
-        },
-      ]);
-      setData(res.data.data);
-      setStartDate("")
-      setEndDate("")
-      setLoading(false);
-    } catch (err) {
-      setError(err);
-      window.alert("token expired")
-      navigate("/login");
-      setLoading(false);
-    }
-  };
+  //       {
+  //         field: "outlet",
+  //         headerName: "Outlet",
+  //         flex: 1,
+  //       },
+  //       {
+  //         field: "model",
+  //         headerName: "Model",
+  //         flex: 0.8,
+  //       },
+  //       {
+  //         field: "allQuery",
+  //         headerName: "All Query",
+  //         width :270
+  //       },
+  //       {
+  //         field: "error",
+  //         headerName: "Error",
+  //         width :200
+  //       },
+  //       {
+  //         field: "date",
+  //         headerName: "Date",
+  //         width:130
+  //       },
+  //       {
+  //         field: "time",
+  //         headerName: "Time",
+  //        width:130
+  //       },
+  //     ]);
+  //     setData(res.data.data);
+  //     setStartDate("")
+  //     setEndDate("")
+  //     setLoading(false);
+  //   } catch (err) {
+  //     setError(err);
+  //     window.alert("token expired")
+  //     navigate("/login");
+  //     setLoading(false);
+  //   }
+  // };
 
-  const handleDup = async () => {
-    try {
-      setLoading(true);
-      const token = localStorage.getItem("authToken");
-      if (!token) {
-         navigate("/login");
-        return;
-      }
-      const res = await axios.get(
-        "https://arena-backend-zj42.onrender.com/dupilicatepopups",
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
+  // const handleDup = async () => {
+  //   try {
+  //     setLoading(true);
+  //     const token = localStorage.getItem("authToken");
+  //     if (!token) {
+  //        navigate("/login");
+  //       return;
+  //     }
+  //     const res = await axios.get(
+  //       "https://arena-backend-zj42.onrender.com/dupilicatepopups",
+  //       {
+  //         headers: { Authorization: `Bearer ${token}` },
+  //       }
+  //     );
 
-      // Process the response data to create rows with unique phoneNumber and count combinations
-      const processedData = res.data.data.map((item, index) => ({
-        id: index + 1,
-        phoneNumber: item.number,
-        count: item.count,
-        date: item.date, // Adding the date field
-      }));
+  //     // Process the response data to create rows with unique phoneNumber and count combinations
+  //     const processedData = res.data.data.map((item, index) => ({
+  //       id: index + 1,
+  //       phoneNumber: item.number,
+  //       count: item.count,
+  //       date: item.date, // Adding the date field
+  //     }));
 
-      setCol([
-        { field: "id", headerName: "ID", flex: 0.5 },
-        {
-          field: "phoneNumber",
-          headerName: "Phone Number",
-          flex: 1,
-          cellClassName: "phone-column--cell",
-        },
-        { field: "count", headerName: "Count", flex: 1 },
-        { field: "date", headerName: "Date", flex: 1 },
-      ]);
+  //     setCol([
+  //       { field: "id", headerName: "ID", flex: 0.5 },
+  //       {
+  //         field: "phoneNumber",
+  //         headerName: "Phone Number",
+  //         flex: 1,
+  //         cellClassName: "phone-column--cell",
+  //       },
+  //       { field: "count", headerName: "Count", flex: 1 },
+  //       { field: "date", headerName: "Date", flex: 1 },
+  //     ]);
 
-      setData(processedData);
-      setStartDate("")
-        setEndDate("")
-      setLoading(false);
-    } catch (err) {
-      setError(err);
-      window.alert("token expired")
-      navigate("/login");
-      setLoading(false);
-    }
-  };
+  //     setData(processedData);
+  //     setStartDate("")
+  //       setEndDate("")
+  //     setLoading(false);
+  //   } catch (err) {
+  //     setError(err);
+  //     window.alert("token expired")
+  //     navigate("/login");
+  //     setLoading(false);
+  //   }
+  // };
 
-  const uniqueEntries = async () => {
-    try {
-      setLoading(true);
-      const token = localStorage.getItem("authToken");
-      if (!token) {
-         navigate("/login");
-        return;
-      }
+  // const uniqueEntries = async () => {
+  //   try {
+  //     setLoading(true);
+  //     const token = localStorage.getItem("authToken");
+  //     if (!token) {
+  //        navigate("/login");
+  //       return;
+  //     }
 
-      const res = await axios.get(
-        `https://arena-backend-zj42.onrender.com/popUpUniqueEntries`,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
-      setCol([
-        { field: "id", headerName: "ID", flex: 0.5 },
-        {
-          field: "name",
-          headerName: "Name",
-          flex: 1,
-          cellClassName: "name-column--cell",
-        },
-        {
-          field: "phone",
-          headerName: "Phone Number",
-          flex: 1,
-          cellClassName: "phone-column--cell",
-        },
+  //     const res = await axios.get(
+  //       `https://arena-backend-zj42.onrender.com/popUpUniqueEntries`,
+  //       {
+  //         headers: { Authorization: `Bearer ${token}` },
+  //       }
+  //     );
+  //     setCol([
+  //       { field: "id", headerName: "ID", flex: 0.5 },
+  //       {
+  //         field: "name",
+  //         headerName: "Name",
+  //         flex: 1,
+  //         cellClassName: "name-column--cell",
+  //       },
+  //       {
+  //         field: "phone",
+  //         headerName: "Phone Number",
+  //         flex: 1,
+  //         cellClassName: "phone-column--cell",
+  //       },
 
-        {
-          field: "outlet",
-          headerName: "Outlet",
-          flex: 1,
-        },
-        {
-          field: "model",
-          headerName: "Model",
-          flex: 0.8,
-        },
-        {
-          field: "allQuery",
-          headerName: "All Query",
-          width :270
-        },
-        {
-          field: "error",
-          headerName: "Error",
-          width :200
-        },
-        {
-          field: "date",
-          headerName: "Date",
-          width:130
-        },
-        {
-          field: "time",
-          headerName: "Time",
-         width:130
-        },
-      ]);
-      setData(res.data.data);
-      setStartDate("")
-        setEndDate("")
-      setLoading(false);
-    } catch (error) {
-      setError(error);
-      window.alert("token expired")
-      navigate("/login");
-      setLoading(false);
-    }
-  };
+  //       {
+  //         field: "outlet",
+  //         headerName: "Outlet",
+  //         flex: 1,
+  //       },
+  //       {
+  //         field: "model",
+  //         headerName: "Model",
+  //         flex: 0.8,
+  //       },
+  //       {
+  //         field: "allQuery",
+  //         headerName: "All Query",
+  //         width :270
+  //       },
+  //       {
+  //         field: "error",
+  //         headerName: "Error",
+  //         width :200
+  //       },
+  //       {
+  //         field: "date",
+  //         headerName: "Date",
+  //         width:130
+  //       },
+  //       {
+  //         field: "time",
+  //         headerName: "Time",
+  //        width:130
+  //       },
+  //     ]);
+  //     setData(res.data.data);
+  //     setStartDate("")
+  //       setEndDate("")
+  //     setLoading(false);
+  //   } catch (error) {
+  //     setError(error);
+  //     window.alert("token expired")
+  //     navigate("/login");
+  //     setLoading(false);
+  //   }
+  // };
 
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
-  const handleDownloadCSV = () => {
-    const csvData = [];
-    const headers = col.map((column) => column.headerName);
-    csvData.push(headers);
+  // const handleDownloadCSV = () => {
+  //   const csvData = [];
+  //   const headers = col.map((column) => column.headerName);
+  //   csvData.push(headers);
 
-    newData.forEach((item) => {
-      const row = col.map((column) => item[column.field]);
-      csvData.push(row);
-    });
+    // newData.forEach((item) => {
+    //   const row = col.map((column) => item[column.field]);
+    //   csvData.push(row);
+    // });
 
-    const csvContent = csvData.map((row) => row.join(",")).join("\n");
+  //   const csvContent = csvData.map((row) => row.join(",")).join("\n");
 
-    const blob = new Blob([csvContent], { type: "text/csv" });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.style.display = "none";
-    a.href = url;
-    a.download = "popUp.csv";
-    document.body.appendChild(a);
-    a.click();
-    window.URL.revokeObjectURL(url);
-    document.body.removeChild(a);
-  };
+  //   const blob = new Blob([csvContent], { type: "text/csv" });
+  //   const url = window.URL.createObjectURL(blob);
+  //   const a = document.createElement("a");
+  //   a.style.display = "none";
+  //   a.href = url;
+  //   a.download = "popUp.csv";
+  //   document.body.appendChild(a);
+  //   a.click();
+  //   window.URL.revokeObjectURL(url);
+  //   document.body.removeChild(a);
+  // };
 
-  // Custom toolbar with the download button
+  // // Custom toolbar with the download button
 
-  const CustomToolbar = () => {
-    return (
-      <GridToolbarContainer>
-        <GridToolbarColumnsButton />
-        <GridToolbarFilterButton />
-        <GridToolbarDensitySelector />
-        <IconButton
-          color="primary"
-          onClick={handleDownloadCSV}
-          sx={{
-            marginLeft: "10px",
-            backgroundColor: "white",
-            fontSize: "14px",
-            padding: "5px",
-            minWidth: "auto",
-            height: "25px",
-            color: "#3e4396",
-          }}
-        >
-          <DownloadIcon />
-        </IconButton>
-      </GridToolbarContainer>
-    );
-  };
+  // const CustomToolbar = () => {
+  //   return (
+  //     <GridToolbarContainer>
+  //       <GridToolbarColumnsButton />
+  //       <GridToolbarFilterButton />
+  //       <GridToolbarDensitySelector />
+  //       <IconButton
+  //         color="primary"
+  //         onClick={handleDownloadCSV}
+  //         sx={{
+  //           marginLeft: "10px",
+  //           backgroundColor: "white",
+  //           fontSize: "14px",
+  //           padding: "5px",
+  //           minWidth: "auto",
+  //           height: "25px",
+  //           color: "#3e4396",
+  //         }}
+  //       >
+  //         <DownloadIcon />
+  //       </IconButton>
+  //     </GridToolbarContainer>
+  //   );
+  // };
 
-  const handleStartDateChange = (event) => {
-    setStartDate(event.target.value);
-  };
+  // const handleStartDateChange = (event) => {
+  //   setStartDate(event.target.value);
+  // };
 
-  const handleEndDateChange = (event) => {
-    setEndDate(event.target.value);
-  };
+  // const handleEndDateChange = (event) => {
+  //   setEndDate(event.target.value);
+  // };
   return (
     <Box m="20px">
       <div
@@ -579,7 +580,7 @@ const Popup = () => {
                 </div>
               ),
             }))}
-            components={{ Toolbar: CustomToolbar }}
+            // components={{ Toolbar: CustomToolbar }}
             sx={{
               backgroundColor: "white", // Set the background color to white
               fontSize:15
