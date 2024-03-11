@@ -16,6 +16,7 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import "../../style/style.css";
 import eurokidsLogo from "../../images/eurokids- logo-bunny.png";
 import student from "../../images/student-grad-jumping-animated-clipart-crca.gif";
+import school  from "../../images/school.webp";
 const defaultTheme = createTheme();
 
 const Login = () => {
@@ -97,6 +98,7 @@ const Login = () => {
             marginLeft: "auto", // Center the grid horizontally
             marginRight: "auto", // Center the grid horizontally
             justifyContent: "center", // Center the content horizontally
+            // backgroundColor:"red"
           }}
         >  
         <img
@@ -108,10 +110,10 @@ const Login = () => {
           position: "fixed",
           top: "370px",
           left: "90px",
+        
+        
         }}
       />
-
-
           <Grid
             item
             xs={12}            
@@ -130,7 +132,7 @@ const Login = () => {
                 left: -30,
                 right: -30,
                 bottom: 0,
-                backgroundImage: "url(https://media1.giphy.com/media/0PN1YBJbOcMwQHGAbA/giphy.gif)",
+                backgroundImage: `url(${school})`,
                 backgroundRepeat: "no-repeat",
                      // backgroundPosition: "center",
                 backgroundSize: "100% auto", // Increase the width of the background image
