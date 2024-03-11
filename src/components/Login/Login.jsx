@@ -169,7 +169,14 @@ const Login = () => {
               alt="Logo"
               // height="50"
               width="150"
-              style={{ marginRight: "14px", marginTop: "-24px" }}
+              style={{
+                width: "15%", // Adjust the percentage based on your layout
+                height: "auto", // Maintain the aspect ratio
+                position: "absolute",
+                top: "50%", // Center vertically
+                left: "50%", // Center horizontally
+                transform: "translate(-50%, -50%)", // Center the image
+              }}
             />
             <Avatar sx={{ m: 1, backgroundColor: "#3e4396" }}>
               <LockOutlinedIcon />
