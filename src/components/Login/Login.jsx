@@ -92,11 +92,10 @@ const Login = () => {
           spacing={0}
           sx={{
             height: "500px",
-            width: "800px",
+            width: "800px", // Adjust the width as needed
             marginTop: "70px",
-            // backgroundColor:"red",
-            marginLeft: "20px",
-            marginRight :"20px",
+            marginLeft: "auto", // Center the grid horizontally
+            marginRight: "auto", // Center the grid horizontally
             justifyContent: "center", // Center the content horizontally
           }}
         >  
