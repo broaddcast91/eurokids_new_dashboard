@@ -103,12 +103,11 @@ const Login = () => {
         src={student} // Use the imported student variable here
         alt="Student"
         style={{
-          width: "230px", // Decrease the width of the image
-          height: "250px", // Maintain the aspect ratio
-          position: "absolute", // Position the image absolutely
-          top: "370px", // Adjust the top position as needed
-          left: "120px", // Adjust the left position as needed
-          // right :"10px"
+          width: "230px",
+          height: "250px",
+          position: "fixed",
+          top: "370px",
+          left: "90px",
         }}
       />
 
@@ -169,14 +168,7 @@ const Login = () => {
               alt="Logo"
               // height="50"
               width="150"
-              style={{
-                width: "15%", // Adjust the percentage based on your layout
-                height: "auto", // Maintain the aspect ratio
-                position: "absolute",
-                top: "50%", // Center vertically
-                left: "50%", // Center horizontally
-                transform: "translate(-50%, -50%)", // Center the image
-              }}
+              style={{ marginRight: "14px", marginTop: "-24px" }}
             />
             <Avatar sx={{ m: 1, backgroundColor: "#3e4396" }}>
               <LockOutlinedIcon />
