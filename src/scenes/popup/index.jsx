@@ -11,13 +11,13 @@ import axios from "axios";
 
 import {
   DataGrid,
-  // GridToolbarContainer,
-  // GridToolbarColumnsButton,
-  // GridToolbarFilterButton,
-  // GridToolbarDensitySelector,
+  GridToolbarContainer,
+  GridToolbarColumnsButton,
+  GridToolbarFilterButton,
+  GridToolbarDensitySelector,
 } from "@mui/x-data-grid";
-// import { IconButton } from "@mui/material";
-// import DownloadIcon from "@mui/icons-material/Download";
+import { IconButton } from "@mui/material";
+import DownloadIcon from "@mui/icons-material/Download";
 const Popup = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -364,56 +364,59 @@ const Popup = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
-  // const handleDownloadCSV = () => {
-  //   const csvData = [];
-  //   const headers = col.map((column) => column.headerName);
-  //   csvData.push(headers);
+  const handleDownloadCSV = () => {
+    const csvData = [];
+    const headers = col.map((column) => column.headerName);
+    csvData.push(headers);
 
-    // newData.forEach((item) => {
-    //   const row = col.map((column) => item[column.field]);
-    //   csvData.push(row);
-    // });
+    newData.forEach((item) => {
+      const row = col.map((column) => item[column.field]);
+      csvData.push(row);
+    });
 
-  //   const csvContent = csvData.map((row) => row.join(",")).join("\n");
+    const csvContent = csvData.map((row) => row.join(",")).join("\n");
 
-  //   const blob = new Blob([csvContent], { type: "text/csv" });
-  //   const url = window.URL.createObjectURL(blob);
-  //   const a = document.createElement("a");
-  //   a.style.display = "none";
-  //   a.href = url;
-  //   a.download = "popUp.csv";
-  //   document.body.appendChild(a);
-  //   a.click();
-  //   window.URL.revokeObjectURL(url);
-  //   document.body.removeChild(a);
-  // };
+    const blob = new Blob([csvContent], { type: "text/csv" });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.style.display = "none";
+    a.href = url;
+    a.download = "popUp.csv";
+    document.body.appendChild(a);
+    a.click();
+    window.URL.revokeObjectURL(url);
+    document.body.removeChild(a);
+  };
 
-  // // Custom toolbar with the download button
+  // Custom toolbar with the download button
 
-  // const CustomToolbar = () => {
-  //   return (
-  //     <GridToolbarContainer>
-  //       <GridToolbarColumnsButton />
-  //       <GridToolbarFilterButton />
-  //       <GridToolbarDensitySelector />
-  //       <IconButton
-  //         color="primary"
-  //         onClick={handleDownloadCSV}
-  //         sx={{
-  //           marginLeft: "10px",
-  //           backgroundColor: "white",
-  //           fontSize: "14px",
-  //           padding: "5px",
-  //           minWidth: "auto",
-  //           height: "25px",
-  //           color: "#3e4396",
-  //         }}
-  //       >
-  //         <DownloadIcon />
-  //       </IconButton>
-  //     </GridToolbarContainer>
-  //   );
-  // };
+  const CustomToolbar = () => {
+    return (
+      <GridToolbarContainer>
+        <GridToolbarColumnsButton />
+        <GridToolbarFilterButton />
+        <GridToolbarDensitySelector />
+        <IconButton
+          color="primary"
+          onClick={handleDownloadCSV}
+          sx={{
+            marginLeft: "10px",
+            backgroundColor: "white",
+            fontSize: "14px",
+            padding: "5px",
+            minWidth: "auto",
+            height: "25px",
+            color: "#3e4396",
+            "&:hover": {
+              color:"#fe1c1f" ,
+            },
+          }}
+        >
+          <DownloadIcon />
+        </IconButton>
+      </GridToolbarContainer>
+    );
+  };
 
   // const handleStartDateChange = (event) => {
   //   setStartDate(event.target.value);
@@ -524,7 +527,7 @@ const Popup = () => {
           },
           "& .MuiDataGrid-columnHeader": {
             color: "white",
-            backgroundColor: colors.blueAccent[700], // Optional background color for headers
+            backgroundColor: "#20409a" // Optional background color for headers
           },
           "& .MuiDataGrid-virtualScroller": {
             backgroundColor: colors.sabooAutoColors[400],
@@ -537,25 +540,21 @@ const Popup = () => {
           //   },
           // },
           "& .MuiCheckbox-root": {
-            color: `${colors.blueAccent[700]} !important`,
+            color: `#20409a !important`,
           },
           "& .MuiDataGrid-toolbarContainer .MuiButton-text ": {
-            color: `${colors.blueAccent[700]} !important`,
+            color: `#20409a !important`,
           },
           "& .MuiDataGrid-toolbarContainer .MuiButton-text:hover ": {
-            color: `${colors.blueAccent[700]}} !important`,
+            color: `#fe1c1f !important`,
           },
           "& .MuiDataGrid-sortIcon": {
             color: "white",
           },
-          // "& .MuiDataGrid-cell": {
-          //   //borderBottom: "none",
-          //   backgroundColor: "white",
-          //   borderBottom: "1px solid #ccc", // Add a border to table cells
-          // },
+         
 
           "& .css-196n7va-MuiSvgIcon-root": {
-            color: "white",
+            color: "black",
           },
         }}
       >
@@ -580,7 +579,7 @@ const Popup = () => {
                 </div>
               ),
             }))}
-            // components={{ Toolbar: CustomToolbar }}
+            components={{ Toolbar: CustomToolbar }}
             sx={{
               backgroundColor: "white", // Set the background color to white
               fontSize:15

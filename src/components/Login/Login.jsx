@@ -120,7 +120,7 @@ const Login = () => {
             sm={12}
             md={7}
             sx={{
-              // backgroundColor:"red",
+             
               position: "relative", // Ensure the Grid item is positioned relative to the pseudo-element
               backgroundColor: "light",
               backgroundPosition: "center",

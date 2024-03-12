@@ -54,7 +54,7 @@ const Sidebar = () => {
     <Box
       sx={{
         "& .pro-sidebar-inner": {
-          background: `${colors.blueAccent[700]} !important`,
+          background: `#20409a !important`,
         },
         "& .pro-icon-wrapper": {
           backgroundColor: "transparent !important",
@@ -109,7 +109,7 @@ const Sidebar = () => {
                 <Typography variant="h3" color={colors.redAccent[100]}>
                   <img
                     alt="profile-user"
-                    width="100px"
+                    width="130px"
                     height="100px"
                     src={eurokidsLogo}
                   />
