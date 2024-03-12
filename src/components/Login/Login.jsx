@@ -170,7 +170,7 @@ const Login = () => {
               alt="Logo"
               // height="50"
               width="150"
-              style={{ marginRight: "14px", marginTop: "-24px" }}
+              style={{ marginRight: "3px", marginTop: "-24px" }}
             />
             <Avatar sx={{ m: 1, backgroundColor: "#3e4396" }}>
               <LockOutlinedIcon />

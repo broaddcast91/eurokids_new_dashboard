@@ -1,14 +1,17 @@
 import { useState } from "react";
-import { ProSidebar, Menu, MenuItem, 
+import {
+  ProSidebar,
+  Menu,
+  MenuItem,
   // SubMenu
- } from "react-pro-sidebar";
+} from "react-pro-sidebar";
 import { Box, IconButton, Typography, useTheme, Tooltip } from "@mui/material";
 import { Link } from "react-router-dom";
 import "react-pro-sidebar/dist/css/styles.css";
 import { tokens } from "../../theme";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import LogoutIcon from "@mui/icons-material/Logout";
-import eurokidsLogo from '../../images/eurokids_logo.png';
+import eurokidsLogo from "../../images/eurokids_logo.png";
 import { FaWpforms } from "react-icons/fa";
 import { FaRegWindowMaximize } from "react-icons/fa";
 // const CustomSubMenuTitle = ({ title, icon }) => (
@@ -20,8 +23,6 @@ import { FaRegWindowMaximize } from "react-icons/fa";
    
 //   </Tooltip>
 // );
-
-
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -71,21 +72,18 @@ const Sidebar = () => {
         ".custom-submenu-title": {
           padding: "4px",
           color: "white",
-         
         },
-        ".custom-submenu-title :hover":{
+        ".custom-submenu-title :hover": {
           color: "#db4f4a !important",
         },
 
         ".custom-submenu-icon": {
           // marginRight: "100px",
           color: "white",
-         
         },
-        ".custom-submenu-icon :hover":{
+        ".custom-submenu-icon :hover": {
           color: "#db4f4a !important",
         },
-        
       }}
     >
       <ProSidebar collapsed={isCollapsed}>
@@ -136,64 +134,39 @@ const Sidebar = () => {
                   color={colors.grey[100]}
                   fontWeight="bold"
                   sx={{ m: "10px 0 0 0" }}
-                >
-                   EuroKids
-                </Typography>
+                ></Typography>
               </Box>
             </Box>
           )}
 
-          <Box paddingLeft={isCollapsed ? undefined : "10%"}>
-            
-{/* <SubMenu
-  title={
-    <CustomSubMenuTitle title="Arena" icon={<DirectionsCarIcon />} />
-  }
-  selected={selected}
-  setSelected={setSelected}
-> */}
-              <Item
-                title="Popup"
-                to="/popup"
-                icon={<FaRegWindowMaximize />}
-                selected={selected}
-                setSelected={setSelected}
-              />
-            
-             
-              <Item
-                title="Enquiries"
-                to="/enquiries"
-                icon={<FaWpforms />}
-                selected={selected}
-                setSelected={setSelected}
-              />
-             
-            {/* </SubMenu> */}
-
-            {/* <SubMenu
-              title={
-                <CustomSubMenuTitle title=" SabooGroups" icon={<GroupsIcon />} />
-              }
+          <Box paddingLeft={isCollapsed ? undefined : "10%"} >
+            <Item
+              title="Popup"
+              to="/popup"
+              icon={<FaRegWindowMaximize />}
               selected={selected}
               setSelected={setSelected}
-            >
-              <Item
-                title="Contact Us"
-                to="/saboogroups"
-                icon={<ContactPhoneIcon />}
-                selected={selected}
-                setSelected={setSelected}
-              />
-            </SubMenu> */}
+            />
+
+            <Item
+              title="Enquiries"
+              to="/enquiries"
+              icon={<FaWpforms />}
+              selected={selected}
+              setSelected={setSelected}
+            />
           </Box>
-          <Item
-            title="Log Out"
-            to="/logout"
-            icon={<LogoutIcon />}
-            selected={selected}
-            setSelected={setSelected}
-          />
+          <Box paddingLeft={isCollapsed ? undefined : "10%"} style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+      <Box style={{ marginTop: "530px" }}>
+        <Item
+          title="Log Out"
+          to="/logout"
+          icon={<LogoutIcon />}
+          selected={selected}
+          setSelected={setSelected}
+        />
+      </Box>
+    </Box>
         </Menu>
       </ProSidebar>
     </Box>
@@ -201,4 +174,3 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
-
