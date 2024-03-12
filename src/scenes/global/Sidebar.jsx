@@ -157,7 +157,7 @@ const Sidebar = () => {
             />
           </Box>
           <Box paddingLeft={isCollapsed ? undefined : "10%"} style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-      <Box style={{ marginTop: "530px" }}>
+      <Box style={{ marginTop: "550px" }}>
         <Item
           title="Log Out"
           to="/logout"
